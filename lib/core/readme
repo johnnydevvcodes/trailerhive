@@ -1,0 +1,5 @@
+core/ rules
+ 
+- should only contain classes which app/ and data/ use 
+    - objects
+- contains global extensions or utilities

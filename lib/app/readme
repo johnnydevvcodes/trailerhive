@@ -1,0 +1,4 @@
+app/ rules
+ 
+- should only contain state managers / state manager extensions
+- should only contain widgets / widget extensions
