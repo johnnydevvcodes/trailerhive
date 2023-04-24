@@ -13,10 +13,10 @@ TextTheme get textTheme {
 
     //Title
     titleLarge: TextStyle(
-        fontFamily: FontFamily.lato,
-        fontSize: 18,
-        fontWeight: FontWeight.w600,
-        color: Colors.black),
+      fontFamily: FontFamily.lato,
+      fontSize: 20,
+      fontWeight: FontWeight.w700,
+    ),
 
     //Subtitle
     titleMedium: TextStyle(

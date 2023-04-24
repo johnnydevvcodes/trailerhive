@@ -38,9 +38,25 @@ dev_dependencies:
   retrofit_generator: ^4.0.1
   injectable_generator:
   flutter_lints: ^2.0.0
+  flutter_launcher_icons:
+  flutter_native_splash: ^2.2.5
 
 flutter_gen:
   output: lib/core/gen/
+  flutter_svg: true
+
+
+flutter_icons:
+  ios: true
+  android: true
+  remove_alpha_ios: true
+  image_path_ios: "assets/images/th_launcher_icon.png"
+  image_path_android: "assets/images/th_launcher_icon.png"
+
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: assets/images/th_launcher_icon.png
 
 flutter:
   uses-material-design: true
