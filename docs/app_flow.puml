@@ -1,7 +1,7 @@
 ' NOTE:
 ' option + D to preview
 
-@startuml App Flow
+@startuml AppFlow
 
 box App Flow
 actor User as U

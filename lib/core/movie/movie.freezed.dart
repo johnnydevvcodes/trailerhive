@@ -21,16 +21,17 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Movie {
   String? get uid => throw _privateConstructorUsedError;
-  @JsonKey(name: 'name')
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'plot')
-  String? get plot => throw _privateConstructorUsedError;
-  @JsonKey(name: 'poster')
-  int? get poster => throw _privateConstructorUsedError;
-  @JsonKey(name: 'trailer')
-  bool? get trailer => throw _privateConstructorUsedError;
-  @JsonKey(name: 'type')
+  String? get youtubeId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Title')
+  String? get title => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Year')
+  String? get year => throw _privateConstructorUsedError;
+  @JsonKey(name: 'imdbID')
+  String? get imdbId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Type')
   String? get type => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Poster')
+  String? get poster => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,11 +45,12 @@ abstract class $MovieCopyWith<$Res> {
   @useResult
   $Res call(
       {String? uid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'plot') String? plot,
-      @JsonKey(name: 'poster') int? poster,
-      @JsonKey(name: 'trailer') bool? trailer,
-      @JsonKey(name: 'type') String? type});
+      String? youtubeId,
+      @JsonKey(name: 'Title') String? title,
+      @JsonKey(name: 'Year') String? year,
+      @JsonKey(name: 'imdbID') String? imdbId,
+      @JsonKey(name: 'Type') String? type,
+      @JsonKey(name: 'Poster') String? poster});
 }
 
 /// @nodoc
@@ -65,36 +67,41 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
   @override
   $Res call({
     Object? uid = freezed,
-    Object? name = freezed,
-    Object? plot = freezed,
-    Object? poster = freezed,
-    Object? trailer = freezed,
+    Object? youtubeId = freezed,
+    Object? title = freezed,
+    Object? year = freezed,
+    Object? imdbId = freezed,
     Object? type = freezed,
+    Object? poster = freezed,
   }) {
     return _then(_value.copyWith(
       uid: freezed == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      youtubeId: freezed == youtubeId
+          ? _value.youtubeId
+          : youtubeId // ignore: cast_nullable_to_non_nullable
               as String?,
-      plot: freezed == plot
-          ? _value.plot
-          : plot // ignore: cast_nullable_to_non_nullable
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      year: freezed == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imdbId: freezed == imdbId
+          ? _value.imdbId
+          : imdbId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       poster: freezed == poster
           ? _value.poster
           : poster // ignore: cast_nullable_to_non_nullable
-              as int?,
-      trailer: freezed == trailer
-          ? _value.trailer
-          : trailer // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -108,11 +115,12 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   @useResult
   $Res call(
       {String? uid,
-      @JsonKey(name: 'name') String? name,
-      @JsonKey(name: 'plot') String? plot,
-      @JsonKey(name: 'poster') int? poster,
-      @JsonKey(name: 'trailer') bool? trailer,
-      @JsonKey(name: 'type') String? type});
+      String? youtubeId,
+      @JsonKey(name: 'Title') String? title,
+      @JsonKey(name: 'Year') String? year,
+      @JsonKey(name: 'imdbID') String? imdbId,
+      @JsonKey(name: 'Type') String? type,
+      @JsonKey(name: 'Poster') String? poster});
 }
 
 /// @nodoc
@@ -125,36 +133,41 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
   @override
   $Res call({
     Object? uid = freezed,
-    Object? name = freezed,
-    Object? plot = freezed,
-    Object? poster = freezed,
-    Object? trailer = freezed,
+    Object? youtubeId = freezed,
+    Object? title = freezed,
+    Object? year = freezed,
+    Object? imdbId = freezed,
     Object? type = freezed,
+    Object? poster = freezed,
   }) {
     return _then(_$_Movie(
       uid: freezed == uid
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      youtubeId: freezed == youtubeId
+          ? _value.youtubeId
+          : youtubeId // ignore: cast_nullable_to_non_nullable
               as String?,
-      plot: freezed == plot
-          ? _value.plot
-          : plot // ignore: cast_nullable_to_non_nullable
+      title: freezed == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String?,
+      year: freezed == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imdbId: freezed == imdbId
+          ? _value.imdbId
+          : imdbId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: freezed == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String?,
       poster: freezed == poster
           ? _value.poster
           : poster // ignore: cast_nullable_to_non_nullable
-              as int?,
-      trailer: freezed == trailer
-          ? _value.trailer
-          : trailer // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -165,11 +178,12 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
 class _$_Movie with DiagnosticableTreeMixin implements _Movie {
   const _$_Movie(
       {this.uid,
-      @JsonKey(name: 'name') this.name,
-      @JsonKey(name: 'plot') this.plot,
-      @JsonKey(name: 'poster') this.poster,
-      @JsonKey(name: 'trailer') this.trailer,
-      @JsonKey(name: 'type') this.type});
+      this.youtubeId,
+      @JsonKey(name: 'Title') this.title,
+      @JsonKey(name: 'Year') this.year,
+      @JsonKey(name: 'imdbID') this.imdbId,
+      @JsonKey(name: 'Type') this.type,
+      @JsonKey(name: 'Poster') this.poster});
 
   factory _$_Movie.fromJson(Map<String, dynamic> json) =>
       _$$_MovieFromJson(json);
@@ -177,24 +191,26 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
   @override
   final String? uid;
   @override
-  @JsonKey(name: 'name')
-  final String? name;
+  final String? youtubeId;
   @override
-  @JsonKey(name: 'plot')
-  final String? plot;
+  @JsonKey(name: 'Title')
+  final String? title;
   @override
-  @JsonKey(name: 'poster')
-  final int? poster;
+  @JsonKey(name: 'Year')
+  final String? year;
   @override
-  @JsonKey(name: 'trailer')
-  final bool? trailer;
+  @JsonKey(name: 'imdbID')
+  final String? imdbId;
   @override
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'Type')
   final String? type;
+  @override
+  @JsonKey(name: 'Poster')
+  final String? poster;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Movie(uid: $uid, name: $name, plot: $plot, poster: $poster, trailer: $trailer, type: $type)';
+    return 'Movie(uid: $uid, youtubeId: $youtubeId, title: $title, year: $year, imdbId: $imdbId, type: $type, poster: $poster)';
   }
 
   @override
@@ -203,11 +219,12 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
     properties
       ..add(DiagnosticsProperty('type', 'Movie'))
       ..add(DiagnosticsProperty('uid', uid))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('plot', plot))
-      ..add(DiagnosticsProperty('poster', poster))
-      ..add(DiagnosticsProperty('trailer', trailer))
-      ..add(DiagnosticsProperty('type', type));
+      ..add(DiagnosticsProperty('youtubeId', youtubeId))
+      ..add(DiagnosticsProperty('title', title))
+      ..add(DiagnosticsProperty('year', year))
+      ..add(DiagnosticsProperty('imdbId', imdbId))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('poster', poster));
   }
 
   @override
@@ -216,17 +233,19 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
         (other.runtimeType == runtimeType &&
             other is _$_Movie &&
             (identical(other.uid, uid) || other.uid == uid) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.plot, plot) || other.plot == plot) &&
-            (identical(other.poster, poster) || other.poster == poster) &&
-            (identical(other.trailer, trailer) || other.trailer == trailer) &&
-            (identical(other.type, type) || other.type == type));
+            (identical(other.youtubeId, youtubeId) ||
+                other.youtubeId == youtubeId) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.year, year) || other.year == year) &&
+            (identical(other.imdbId, imdbId) || other.imdbId == imdbId) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.poster, poster) || other.poster == poster));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, uid, name, plot, poster, trailer, type);
+  int get hashCode => Object.hash(
+      runtimeType, uid, youtubeId, title, year, imdbId, type, poster);
 
   @JsonKey(ignore: true)
   @override
@@ -245,31 +264,34 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
 abstract class _Movie implements Movie {
   const factory _Movie(
       {final String? uid,
-      @JsonKey(name: 'name') final String? name,
-      @JsonKey(name: 'plot') final String? plot,
-      @JsonKey(name: 'poster') final int? poster,
-      @JsonKey(name: 'trailer') final bool? trailer,
-      @JsonKey(name: 'type') final String? type}) = _$_Movie;
+      final String? youtubeId,
+      @JsonKey(name: 'Title') final String? title,
+      @JsonKey(name: 'Year') final String? year,
+      @JsonKey(name: 'imdbID') final String? imdbId,
+      @JsonKey(name: 'Type') final String? type,
+      @JsonKey(name: 'Poster') final String? poster}) = _$_Movie;
 
   factory _Movie.fromJson(Map<String, dynamic> json) = _$_Movie.fromJson;
 
   @override
   String? get uid;
   @override
-  @JsonKey(name: 'name')
-  String? get name;
+  String? get youtubeId;
   @override
-  @JsonKey(name: 'plot')
-  String? get plot;
+  @JsonKey(name: 'Title')
+  String? get title;
   @override
-  @JsonKey(name: 'poster')
-  int? get poster;
+  @JsonKey(name: 'Year')
+  String? get year;
   @override
-  @JsonKey(name: 'trailer')
-  bool? get trailer;
+  @JsonKey(name: 'imdbID')
+  String? get imdbId;
   @override
-  @JsonKey(name: 'type')
+  @JsonKey(name: 'Type')
   String? get type;
+  @override
+  @JsonKey(name: 'Poster')
+  String? get poster;
   @override
   @JsonKey(ignore: true)
   _$$_MovieCopyWith<_$_Movie> get copyWith =>

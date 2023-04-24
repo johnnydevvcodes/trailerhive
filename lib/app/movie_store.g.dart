@@ -24,10 +24,79 @@ mixin _$MovieStore on _MovieStore, Store {
     });
   }
 
+  late final _$searchedMoviesAtom =
+      Atom(name: '_MovieStore.searchedMovies', context: context);
+
+  @override
+  List<Movie> get searchedMovies {
+    _$searchedMoviesAtom.reportRead();
+    return super.searchedMovies;
+  }
+
+  @override
+  set searchedMovies(List<Movie> value) {
+    _$searchedMoviesAtom.reportWrite(value, super.searchedMovies, () {
+      super.searchedMovies = value;
+    });
+  }
+
+  late final _$searchMovieAsyncAction =
+      AsyncAction('_MovieStore.searchMovie', context: context);
+
+  @override
+  Future<dynamic> searchMovie(String title) {
+    return _$searchMovieAsyncAction.run(() => super.searchMovie(title));
+  }
+
+  late final _$getVideoIdAsyncAction =
+      AsyncAction('_MovieStore.getVideoId', context: context);
+
+  @override
+  Future<String> getVideoId(String qualifiedTitle) {
+    return _$getVideoIdAsyncAction.run(() => super.getVideoId(qualifiedTitle));
+  }
+
+  late final _$_MovieStoreActionController =
+      ActionController(name: '_MovieStore', context: context);
+
+  @override
+  Future<dynamic> saveMovie(Movie movie) {
+    final _$actionInfo = _$_MovieStoreActionController.startAction(
+        name: '_MovieStore.saveMovie');
+    try {
+      return super.saveMovie(movie);
+    } finally {
+      _$_MovieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Future<dynamic> unsaveMovie(Movie movie) {
+    final _$actionInfo = _$_MovieStoreActionController.startAction(
+        name: '_MovieStore.unsaveMovie');
+    try {
+      return super.unsaveMovie(movie);
+    } finally {
+      _$_MovieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void sortBy(String key, bool isAscending) {
+    final _$actionInfo =
+        _$_MovieStoreActionController.startAction(name: '_MovieStore.sortBy');
+    try {
+      return super.sortBy(key, isAscending);
+    } finally {
+      _$_MovieStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
-movies: ${movies}
+movies: ${movies},
+searchedMovies: ${searchedMovies}
     ''';
   }
 }

@@ -8,18 +8,20 @@ part of 'movie.dart';
 
 _$_Movie _$$_MovieFromJson(Map json) => _$_Movie(
       uid: json['uid'] as String?,
-      name: json['name'] as String?,
-      plot: json['plot'] as String?,
-      poster: json['poster'] as int?,
-      trailer: json['trailer'] as bool?,
-      type: json['type'] as String?,
+      youtubeId: json['youtubeId'] as String?,
+      title: json['Title'] as String?,
+      year: json['Year'] as String?,
+      imdbId: json['imdbID'] as String?,
+      type: json['Type'] as String?,
+      poster: json['Poster'] as String?,
     );
 
 Map<String, dynamic> _$$_MovieToJson(_$_Movie instance) => <String, dynamic>{
       'uid': instance.uid,
-      'name': instance.name,
-      'plot': instance.plot,
-      'poster': instance.poster,
-      'trailer': instance.trailer,
-      'type': instance.type,
+      'youtubeId': instance.youtubeId,
+      'Title': instance.title,
+      'Year': instance.year,
+      'imdbID': instance.imdbId,
+      'Type': instance.type,
+      'Poster': instance.poster,
     };

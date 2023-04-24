@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
@@ -16,13 +17,31 @@ abstract class _MovieStore with Store {
   var _movieRepo = locator<MovieRepo>();
 
   _MovieStore() {
-    _movieRepo.streamMovies().listen((movies) {
-      this.movies = movies;
-    });
+    // _movieRepo.getVideo("Maverick");
+    searchMovie("Maverick");
+    // _movieRepo.streamMovies().listen((movies) {
+    //   this.movies = movies;
+    // });
   }
 
   @observable
   List<Movie> movies = [];
+
+  @observable
+  List<Movie> searchedMovies = [];
+
+  @action
+  Future searchMovie(String title) async {
+    var searchedMovies = await _movieRepo.searchMovie("Maverick");
+    this.searchedMovies = searchedMovies;
+  }
+
+  @action
+  Future<String> getVideoId(String qualifiedTitle) async {
+    var vidId = await _movieRepo.getVideo(qualifiedTitle);
+    log("store video: $vidId");
+    return vidId;
+  }
 
   @action
   Future saveMovie(Movie movie) {

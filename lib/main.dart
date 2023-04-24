@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:trailerhive/core/theme/app_colors.dart';
 import 'package:trailerhive/core/theme/app_theme.dart';
 import 'app/home/home_screen.dart';
+import 'core/di/service_locator.dart';
+import 'data/service/rest_instance.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Rest.initialize();
+  setupLocator();
   runApp(const TrailerHive());
 }
 
@@ -16,28 +20,7 @@ class TrailerHive extends StatelessWidget {
       title: 'Trailer Hive',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.defaultTheme,
-      home: const MainScreen(),
-    );
-  }
-}
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  @override
-  Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme;
-    return Scaffold(
-      appBar: AppBar(
-          backgroundColor: AppColors.pink,
-          automaticallyImplyLeading: false,
-          title: Text('Trailer Hive', style: textTheme.titleLarge)),
-      body: HomeScreen(),
+      home: const HomeScreen(),
     );
   }
 }
