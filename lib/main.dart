@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trailerhive/core/theme/app_colors.dart';
 import 'package:trailerhive/core/theme/app_theme.dart';
-import 'package:trailerhive/core/theme/text_theme.dart';
-
-import 'app/home_screen.dart';
+import 'app/home/home_screen.dart';
 
 void main() {
   runApp(const TrailerHive());
