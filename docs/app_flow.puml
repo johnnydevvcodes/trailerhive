@@ -1,0 +1,47 @@
+' NOTE:
+' option + D to preview
+
+@startuml App Flow
+
+box App Flow
+actor User as U
+participant "Main" as main
+participant "Home Screen" as home
+participant "Search Screen" as search
+participant "Detail Screen" as detail
+participant "Local Db" as ldb
+participant "Movie Api" as mapi
+participant "Youtube Api" as yapi
+
+
+U -> main : "On start"
+
+group User Entry
+    main -> main: Ready Api instance
+    main -> home: Launch HomePage
+    home -> home: Show Search
+    home <-- mapi: GET\nShow Movie Recommendations
+    home <-- ldb: GET\nShow Saved Movies
+end
+
+U -> home : "On search"
+
+group User Search
+    home -> search: Search via\n Search Screen
+    search -> search: Keyword input
+    search <-- mapi: GET\nShow Movie Item or List
+end
+
+
+U -> detail : "On movie detail screen"
+
+group User View/Play Trailer + Save/Unsave Movie
+    search -> detail: View movie detail
+    detail -> detail: Play Trailer
+    yapi --> detail: GET\nStream youtube snippet
+    detail -> detail: Save/Unsave Movie
+    detail --> ldb: CRUD\nUpdate movie list local db
+end
+
+
+@enduml
