@@ -59,10 +59,43 @@ class MovieRepo {
 
   Future<List<Movie>> searchMovie(String title) async {
     var data = await _omDbclient.getMovies(title);
+    if (data == null) return [];
     List list = data['Search'];
     if (list.isEmpty) return [];
     var movies = list.map((e) => Movie.fromJson(e)).toList();
-    return movies;
+
+    List<Movie> moviesWithYtid = [];
+    List<Imdb> imdbs = [];
+    for (var movie in movies) {
+      try {
+        var imdb = await getImdb(movie.imdbId!);
+        imdbs.add(Imdb.fromJson(imdb));
+      } catch (e) {
+        log('err: imdb: $e');
+      }
+    }
+
+    if (imdbs.isEmpty) return [];
+
+    for (var imdb in imdbs) {
+      try {
+        var ytId = await getVideo(imdb.title!);
+        var movie = Movie(
+            uid: imdb.imdbID,
+            youtubeId: ytId,
+            imdb: imdb,
+            title: imdb.title,
+            year: imdb.year,
+            imdbId: imdb.imdbID,
+            type: 'movie',
+            poster: imdb.poster);
+        moviesWithYtid.add(movie);
+      } catch (e) {
+        log('err: imdb: $e');
+      }
+    }
+
+    return moviesWithYtid;
   }
 
   Future getImdb(String id) async {
@@ -77,7 +110,6 @@ class MovieRepo {
   }
 
   Future loadRecoMovies() async {
-
     var record = await _movieDao.getRecords(isReco: true);
     if (record != null) return;
 

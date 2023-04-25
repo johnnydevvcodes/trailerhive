@@ -57,12 +57,20 @@ mixin _$MovieStore on _MovieStore, Store {
     });
   }
 
-  late final _$searchMovieAsyncAction =
-      AsyncAction('_MovieStore.searchMovie', context: context);
+  late final _$isSearchingAtom =
+      Atom(name: '_MovieStore.isSearching', context: context);
 
   @override
-  Future<dynamic> searchMovie(String title) {
-    return _$searchMovieAsyncAction.run(() => super.searchMovie(title));
+  bool get isSearching {
+    _$isSearchingAtom.reportRead();
+    return super.isSearching;
+  }
+
+  @override
+  set isSearching(bool value) {
+    _$isSearchingAtom.reportWrite(value, super.isSearching, () {
+      super.isSearching = value;
+    });
   }
 
   late final _$getVideoIdAsyncAction =
@@ -75,6 +83,17 @@ mixin _$MovieStore on _MovieStore, Store {
 
   late final _$_MovieStoreActionController =
       ActionController(name: '_MovieStore', context: context);
+
+  @override
+  void searchMovie(String title) {
+    final _$actionInfo = _$_MovieStoreActionController.startAction(
+        name: '_MovieStore.searchMovie');
+    try {
+      return super.searchMovie(title);
+    } finally {
+      _$_MovieStoreActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   Future<dynamic> saveMovie(Movie movie) {
@@ -114,7 +133,8 @@ mixin _$MovieStore on _MovieStore, Store {
     return '''
 savedMovies: ${savedMovies},
 recoMovies: ${recoMovies},
-searchedMovies: ${searchedMovies}
+searchedMovies: ${searchedMovies},
+isSearching: ${isSearching}
     ''';
   }
 }

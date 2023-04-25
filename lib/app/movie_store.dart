@@ -15,9 +15,9 @@ class MovieStore = _MovieStore with _$MovieStore;
 
 abstract class _MovieStore with Store {
   var _movieRepo = locator<MovieRepo>();
+  Timer? _timer;
 
   _MovieStore() {
-    
     if (recoMovies.isEmpty) {
       _movieRepo.loadRecoMovies();
     }
@@ -40,10 +40,20 @@ abstract class _MovieStore with Store {
   @observable
   List<Movie> searchedMovies = [];
 
+  @observable
+  bool isSearching = false;
+
   @action
-  Future searchMovie(String title) async {
-    var searchedMovies = await _movieRepo.searchMovie("Maverick");
-    this.searchedMovies = searchedMovies;
+  void searchMovie(String title) {
+    this.isSearching = title.isNotEmpty;
+    this.searchedMovies = [];
+    _timer?.cancel();
+    _timer = Timer(Duration(seconds: 3), () async {
+      if (title.isEmpty) return;
+      var searchedMovies = await _movieRepo.searchMovie(title);
+      this.searchedMovies = searchedMovies;
+      this.isSearching = false;
+    });
   }
 
   @action

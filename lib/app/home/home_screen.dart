@@ -72,17 +72,17 @@ class _HomeScreenState extends State<HomeScreen> {
               SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                 return Padding(
-                  padding:  EdgeInsets.fromLTRB(22, 0, 22, 8),
+                  padding: EdgeInsets.fromLTRB(22, 0, 22, 8),
                   child: MovieCard(_movieStore.savedMovies[index]),
                 );
               }, childCount: _movieStore.savedMovies.length)),
               SliverToBoxAdapter(
-                child: Container(
-                  height: 100.0,
-                  alignment: Alignment.center,
-                  child: Text('No Movies'),
-                ),
-              ),
+                  child: Container(
+                      height: 100.0,
+                      alignment: Alignment.center,
+                      child: Text(_movieStore.savedMovies.isEmpty
+                          ? 'No Movies'
+                          : 'No More Movies')))
             ],
           );
         },
