@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:trailerhive/app/search/search_view.dart';
+import 'package:trailerhive/core/utils/router.dart';
 
 import '../../core/theme/app_colors.dart';
+import '../widgets/cupertino_btn_slim.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -19,7 +22,10 @@ class _SearchScreenState extends State<SearchScreen> {
           automaticallyImplyLeading: true,
           title: Text('Search Movie', style: textTheme.titleLarge)),
       body: CustomScrollView(slivers: [
-        SliverToBoxAdapter(child: Text('Search Movie')),
+        SliverToBoxAdapter(
+            child: CupertinoButtonSlim(
+                onPressed: () => context.toScreen(SearchScreen()),
+                child: SearchView(didNavigate: true))),
         SliverFillRemaining(child: Text('Movies Empty')),
       ]),
     );

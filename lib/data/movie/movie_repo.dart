@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:math';
 
 import 'package:injectable/injectable.dart';
 import 'package:sembast/sembast.dart';
 import 'package:trailerhive/core/di/service_locator.dart';
+import 'package:trailerhive/core/movie/imdb.dart';
 import 'package:trailerhive/data/movie/movie_dao.dart';
 
 import '../../core/movie/movie.dart';
@@ -15,7 +15,7 @@ class MovieRepo {
   var _movieDao = locator<MovieDao>();
   var _omDbclient = Rest.omdbInstance;
   var _ytClient = Rest.youtubeInstance;
-  Stream<List<Movie>> streamMovies() {
+  Stream<List<Movie>> streamSavedMovies() {
     final streamController = StreamController<List<Movie>>();
     _movieDao.dbListener().listen((List<RecordSnapshot> rawMovies) {
       List<Movie> movies = [];
@@ -48,9 +48,49 @@ class MovieRepo {
     return movies;
   }
 
+  Future getImdb(String id) async {
+    var data = await _omDbclient.getImdb(id);
+    return data;
+  }
+
   Future getVideo(String title) async {
     var data = await _ytClient.getVideo(title);
     final videoId = data['items'][0]['id']['videoId'];
     return videoId;
+  }
+
+  Future<List<Movie>> getRecoMovies() async {
+    var ids = [
+      'tt3896198',
+      'tt12801262',
+      'tt1707386',
+      'tt1745960',
+      'tt18376330',
+      'tt0816711',
+    ];
+
+    List<Imdb> imdbs = [];
+    for (var id in ids) {
+      try {
+        var imdb = await getImdb(id);
+        imdbs.add(Imdb.fromJson(imdb));
+      } catch (e) {
+        log('err: imdb: $e');
+      }
+    }
+
+    if (imdbs.isEmpty) return [];
+    var list = imdbs
+        .map((e) => Movie(
+            uid: e.imdbID,
+            imdb: e,
+            title: e.title,
+            year: e.year,
+            imdbId: e.imdbID,
+            type: 'movie',
+            poster: e.poster))
+        .toList();
+
+    return list;
   }
 }

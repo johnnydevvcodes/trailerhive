@@ -9,18 +9,35 @@ part of 'movie_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$MovieStore on _MovieStore, Store {
-  late final _$moviesAtom = Atom(name: '_MovieStore.movies', context: context);
+  late final _$savedMoviesAtom =
+      Atom(name: '_MovieStore.savedMovies', context: context);
 
   @override
-  List<Movie> get movies {
-    _$moviesAtom.reportRead();
-    return super.movies;
+  List<Movie> get savedMovies {
+    _$savedMoviesAtom.reportRead();
+    return super.savedMovies;
   }
 
   @override
-  set movies(List<Movie> value) {
-    _$moviesAtom.reportWrite(value, super.movies, () {
-      super.movies = value;
+  set savedMovies(List<Movie> value) {
+    _$savedMoviesAtom.reportWrite(value, super.savedMovies, () {
+      super.savedMovies = value;
+    });
+  }
+
+  late final _$recoMoviesAtom =
+      Atom(name: '_MovieStore.recoMovies', context: context);
+
+  @override
+  List<Movie> get recoMovies {
+    _$recoMoviesAtom.reportRead();
+    return super.recoMovies;
+  }
+
+  @override
+  set recoMovies(List<Movie> value) {
+    _$recoMoviesAtom.reportWrite(value, super.recoMovies, () {
+      super.recoMovies = value;
     });
   }
 
@@ -95,7 +112,8 @@ mixin _$MovieStore on _MovieStore, Store {
   @override
   String toString() {
     return '''
-movies: ${movies},
+savedMovies: ${savedMovies},
+recoMovies: ${recoMovies},
 searchedMovies: ${searchedMovies}
     ''';
   }

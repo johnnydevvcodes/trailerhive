@@ -22,6 +22,7 @@ Movie _$MovieFromJson(Map<String, dynamic> json) {
 mixin _$Movie {
   String? get uid => throw _privateConstructorUsedError;
   String? get youtubeId => throw _privateConstructorUsedError;
+  Imdb? get imdb => throw _privateConstructorUsedError;
   @JsonKey(name: 'Title')
   String? get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'Year')
@@ -46,11 +47,14 @@ abstract class $MovieCopyWith<$Res> {
   $Res call(
       {String? uid,
       String? youtubeId,
+      Imdb? imdb,
       @JsonKey(name: 'Title') String? title,
       @JsonKey(name: 'Year') String? year,
       @JsonKey(name: 'imdbID') String? imdbId,
       @JsonKey(name: 'Type') String? type,
       @JsonKey(name: 'Poster') String? poster});
+
+  $ImdbCopyWith<$Res>? get imdb;
 }
 
 /// @nodoc
@@ -68,6 +72,7 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
   $Res call({
     Object? uid = freezed,
     Object? youtubeId = freezed,
+    Object? imdb = freezed,
     Object? title = freezed,
     Object? year = freezed,
     Object? imdbId = freezed,
@@ -83,6 +88,10 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
           ? _value.youtubeId
           : youtubeId // ignore: cast_nullable_to_non_nullable
               as String?,
+      imdb: freezed == imdb
+          ? _value.imdb
+          : imdb // ignore: cast_nullable_to_non_nullable
+              as Imdb?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -105,6 +114,18 @@ class _$MovieCopyWithImpl<$Res, $Val extends Movie>
               as String?,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ImdbCopyWith<$Res>? get imdb {
+    if (_value.imdb == null) {
+      return null;
+    }
+
+    return $ImdbCopyWith<$Res>(_value.imdb!, (value) {
+      return _then(_value.copyWith(imdb: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -116,11 +137,15 @@ abstract class _$$_MovieCopyWith<$Res> implements $MovieCopyWith<$Res> {
   $Res call(
       {String? uid,
       String? youtubeId,
+      Imdb? imdb,
       @JsonKey(name: 'Title') String? title,
       @JsonKey(name: 'Year') String? year,
       @JsonKey(name: 'imdbID') String? imdbId,
       @JsonKey(name: 'Type') String? type,
       @JsonKey(name: 'Poster') String? poster});
+
+  @override
+  $ImdbCopyWith<$Res>? get imdb;
 }
 
 /// @nodoc
@@ -134,6 +159,7 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
   $Res call({
     Object? uid = freezed,
     Object? youtubeId = freezed,
+    Object? imdb = freezed,
     Object? title = freezed,
     Object? year = freezed,
     Object? imdbId = freezed,
@@ -149,6 +175,10 @@ class __$$_MovieCopyWithImpl<$Res> extends _$MovieCopyWithImpl<$Res, _$_Movie>
           ? _value.youtubeId
           : youtubeId // ignore: cast_nullable_to_non_nullable
               as String?,
+      imdb: freezed == imdb
+          ? _value.imdb
+          : imdb // ignore: cast_nullable_to_non_nullable
+              as Imdb?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -179,6 +209,7 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
   const _$_Movie(
       {this.uid,
       this.youtubeId,
+      this.imdb,
       @JsonKey(name: 'Title') this.title,
       @JsonKey(name: 'Year') this.year,
       @JsonKey(name: 'imdbID') this.imdbId,
@@ -192,6 +223,8 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
   final String? uid;
   @override
   final String? youtubeId;
+  @override
+  final Imdb? imdb;
   @override
   @JsonKey(name: 'Title')
   final String? title;
@@ -210,7 +243,7 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Movie(uid: $uid, youtubeId: $youtubeId, title: $title, year: $year, imdbId: $imdbId, type: $type, poster: $poster)';
+    return 'Movie(uid: $uid, youtubeId: $youtubeId, imdb: $imdb, title: $title, year: $year, imdbId: $imdbId, type: $type, poster: $poster)';
   }
 
   @override
@@ -220,6 +253,7 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
       ..add(DiagnosticsProperty('type', 'Movie'))
       ..add(DiagnosticsProperty('uid', uid))
       ..add(DiagnosticsProperty('youtubeId', youtubeId))
+      ..add(DiagnosticsProperty('imdb', imdb))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('year', year))
       ..add(DiagnosticsProperty('imdbId', imdbId))
@@ -235,6 +269,7 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.youtubeId, youtubeId) ||
                 other.youtubeId == youtubeId) &&
+            (identical(other.imdb, imdb) || other.imdb == imdb) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.imdbId, imdbId) || other.imdbId == imdbId) &&
@@ -245,7 +280,7 @@ class _$_Movie with DiagnosticableTreeMixin implements _Movie {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, uid, youtubeId, title, year, imdbId, type, poster);
+      runtimeType, uid, youtubeId, imdb, title, year, imdbId, type, poster);
 
   @JsonKey(ignore: true)
   @override
@@ -265,6 +300,7 @@ abstract class _Movie implements Movie {
   const factory _Movie(
       {final String? uid,
       final String? youtubeId,
+      final Imdb? imdb,
       @JsonKey(name: 'Title') final String? title,
       @JsonKey(name: 'Year') final String? year,
       @JsonKey(name: 'imdbID') final String? imdbId,
@@ -277,6 +313,8 @@ abstract class _Movie implements Movie {
   String? get uid;
   @override
   String? get youtubeId;
+  @override
+  Imdb? get imdb;
   @override
   @JsonKey(name: 'Title')
   String? get title;

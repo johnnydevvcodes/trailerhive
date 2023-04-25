@@ -19,13 +19,20 @@ abstract class _MovieStore with Store {
   _MovieStore() {
     // _movieRepo.getVideo("Maverick");
     searchMovie("Maverick");
-    // _movieRepo.streamMovies().listen((movies) {
-    //   this.movies = movies;
-    // });
+    _movieRepo.getRecoMovies().then((movies) {
+      this.recoMovies = movies;
+    });    
+    
+    _movieRepo.streamSavedMovies().listen((movies) {
+      this.savedMovies = movies;
+    });
   }
 
   @observable
-  List<Movie> movies = [];
+  List<Movie> savedMovies = [];
+
+  @observable
+  List<Movie> recoMovies = [];
 
   @observable
   List<Movie> searchedMovies = [];
@@ -55,7 +62,7 @@ abstract class _MovieStore with Store {
 
   @action
   void sortBy(String key, bool isAscending) {
-    List<Movie> sortedMovies = List.from(this.movies);
+    List<Movie> sortedMovies = List.from(this.savedMovies);
     if (sortedMovies.isEmpty) return;
     List objects = sortedMovies.map((e) => e.toJson()).toList();
     if (isAscending) {
@@ -74,6 +81,6 @@ abstract class _MovieStore with Store {
       });
     }
     List<Movie> sorted = objects.map((e) => Movie.fromJson(e)).toList();
-    this.movies = sorted;
+    this.savedMovies = sorted;
   }
 }

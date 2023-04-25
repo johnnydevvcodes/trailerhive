@@ -21,8 +21,9 @@ TextTheme get textTheme {
     //Subtitle
     titleMedium: TextStyle(
         fontFamily: FontFamily.lato,
-        fontSize: 16,
-        fontWeight: FontWeight.w500,
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        letterSpacing: .3,
         color: Colors.black),
 
     //Body
@@ -36,7 +37,14 @@ TextTheme get textTheme {
     bodyMedium: TextStyle(
         fontFamily: FontFamily.lato,
         fontSize: 12,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
+        color: Colors.black),
+
+    //Body
+    bodySmall: TextStyle(
+        fontFamily: FontFamily.lato,
+        fontSize: 10,
+        fontWeight: FontWeight.w500,
         color: Colors.black),
 
     //Caption

@@ -9,6 +9,9 @@ part of 'movie.dart';
 _$_Movie _$$_MovieFromJson(Map json) => _$_Movie(
       uid: json['uid'] as String?,
       youtubeId: json['youtubeId'] as String?,
+      imdb: json['imdb'] == null
+          ? null
+          : Imdb.fromJson(Map<String, dynamic>.from(json['imdb'] as Map)),
       title: json['Title'] as String?,
       year: json['Year'] as String?,
       imdbId: json['imdbID'] as String?,
@@ -19,6 +22,7 @@ _$_Movie _$$_MovieFromJson(Map json) => _$_Movie(
 Map<String, dynamic> _$$_MovieToJson(_$_Movie instance) => <String, dynamic>{
       'uid': instance.uid,
       'youtubeId': instance.youtubeId,
+      'imdb': instance.imdb?.toJson(),
       'Title': instance.title,
       'Year': instance.year,
       'imdbID': instance.imdbId,
