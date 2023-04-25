@@ -44,7 +44,7 @@ class _SearchViewState extends State<SearchView> {
                     .textTheme
                     .bodyLarge!
                     .copyWith(color: AppColors.darkGray),
-                hintText: "Search",
+                hintText: "Search Movie Title",
                 contentPadding: EdgeInsets.only(bottom: 8),
               ),
               style: Theme.of(context).textTheme.bodyLarge,

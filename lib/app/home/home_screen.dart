@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:trailerhive/app/home/recommendations.dart';
+import 'package:trailerhive/app/home/save_list.dart';
 import 'package:trailerhive/app/movie_store.dart';
 import 'package:trailerhive/app/search/search_screen.dart';
 import 'package:trailerhive/app/search/search_view.dart';
@@ -10,6 +11,7 @@ import 'package:trailerhive/core/utils/router.dart';
 
 import '../../core/theme/app_colors.dart';
 import '../widgets/cupertino_btn_slim.dart';
+import 'movie_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,10 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
               style: Theme.of(context).textTheme.titleLarge)),
       body: Observer(
         builder: (BuildContext context) {
-          var savedMovies = _movieStore.savedMovies;
           return CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(child: SizedBox(height: 24)),
+              SliverToBoxAdapter(
+                  child: Container(height: 24, color: Colors.white)),
               SliverAppBar(
                   leadingWidth: 0,
                   backgroundColor: Colors.white,
@@ -57,21 +59,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   pinned: true,
                   title: Container(
                       alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.symmetric(horizontal: 12),
-                      child: Text('Your Saves', style: textTheme.titleMedium))),
+                      margin:
+                          EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('Your Saves', style: textTheme.titleMedium),
+                          Text('Sort by [field]',
+                              style: textTheme.titleSmall!
+                                  .copyWith(color: AppColors.darkGray)),
+                        ],
+                      ))),
               SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return Container(
-                      height: 100.0,
-                      child: Card(
-                        child: Text('data'),
-                      ),
-                    );
-                  },
-                  childCount: 10,
-                ),
-              ),
+                  delegate: SliverChildBuilderDelegate((context, index) {
+                return Padding(
+                  padding:  EdgeInsets.fromLTRB(22, 0, 22, 8),
+                  child: MovieCard(_movieStore.savedMovies[index]),
+                );
+              }, childCount: _movieStore.savedMovies.length)),
               SliverToBoxAdapter(
                 child: Container(
                   height: 100.0,

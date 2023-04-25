@@ -17,7 +17,7 @@ class Rest {
   }
 
   static void initialize() {
-    var ytKey = "AIzaSyCC2eNgnNH4HkTSZNujsFYt48F2v47GUMU";
+    var ytKey = "AIzaSyDs4wkjJ8heVlqF_VcmL9VkQRhX4HntPOY";
     youtubeEndpoint = "https://www.googleapis.com/youtube/v3/search?key=$ytKey";
     omdbEndpoint = "http://www.omdbapi.com/?apikey=7802783c";
   }

@@ -62,10 +62,10 @@ class MovieRepo {
   Future<List<Movie>> getRecoMovies() async {
     var ids = [
       'tt3896198',
-      'tt12801262',
+      'tt1649418',
       'tt1707386',
       'tt1745960',
-      'tt18376330',
+      'tt15326988',
       'tt0816711',
     ];
 
@@ -80,17 +80,27 @@ class MovieRepo {
     }
 
     if (imdbs.isEmpty) return [];
-    var list = imdbs
-        .map((e) => Movie(
-            uid: e.imdbID,
-            imdb: e,
-            title: e.title,
-            year: e.year,
-            imdbId: e.imdbID,
-            type: 'movie',
-            poster: e.poster))
-        .toList();
 
-    return list;
+    List<Movie> movies = [];
+
+    for (var imdb in imdbs) {
+      try {
+        var ytId = await getVideo(imdb.title!);
+        movies.add(
+          Movie(
+              uid: imdb.imdbID,
+              youtubeId: ytId,
+              imdb: imdb,
+              title: imdb.title,
+              year: imdb.year,
+              imdbId: imdb.imdbID,
+              type: 'movie',
+              poster: imdb.poster),
+        );
+      } catch (e) {
+        log('err: imdb: $e');
+      }
+    }
+    return movies;
   }
 }
