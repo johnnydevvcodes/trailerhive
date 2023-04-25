@@ -1,16 +1,12 @@
 # trailerhive
 
-A new Flutter project.
+An app which lets you watch trailers and save movies easily
 
-## Getting Started
+## Notes
 
-This project is a starting point for a Flutter application.
+Run with the stable version of Flutter
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## App Flow
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![alt text](http://www.plantuml.com/plantuml/png/TPDFYzim4CNl-XIFNFQmXBsRKhOqwH-QTfSaBXHoaUrX8x0b8Sb9_UqhZmInkkGKQ-OtqdjFoWD-lHotbNY0iK4PZKTi40oieukYgn3FFaWNng779sk_z2QM6lDtNe1NiWt6eVRa83rgOIEjMcMb3bZzb4glvleGFyhMDpCG3gqZIiGvhalYGDArvoNZkL9I6mfIzKkguqf9xKmhUsmQ1lgk-K-cYLwZ9PMrMbNs_vWnZCsDc6P2Y1hhZ-mC5LOl6fpKIeWtPqQR8jdgu2O1876Phx0dsKtpVb0wZkcMbX27KM4dHnq3c9DwbMzCSET67CxcYfJJhVjXlMOF5RvkZoVDJ7AufzOC0-bEpbVjov6OodBY82_KfJaluaYoc_1ibyyj_PPQM6d2gjp2HScJHd6tZ2TiEV23fgjn7PIsOrWozmr-3pJ0EEoK3qbqKfsUHDOzC9fBdXMK9duhkZwzzdB2qKKcLXuvZgTQ-_YJpYf5v-qgdYrEO2vzBhdbzZF2Rmhh1P6y1KTom9GVeDVAMWftzdodiU0Yo5VyULzlJhgsdGoKbVOnBlJy5-cQdDjp_1c7_Xy0)
