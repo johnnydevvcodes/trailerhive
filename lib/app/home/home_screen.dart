@@ -1,5 +1,7 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:strings/strings.dart';
 import 'package:trailerhive/app/home/recommendations.dart';
 import 'package:trailerhive/app/movie_store.dart';
 import 'package:trailerhive/app/search/search_screen.dart';
@@ -64,9 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text('Your Saves', style: textTheme.titleMedium),
-                          Text('Sort by [field]',
-                              style: textTheme.titleSmall!
-                                  .copyWith(color: AppColors.darkGray)),
+                          _sorter(),
                         ],
                       ))),
               SliverList(
@@ -87,6 +87,55 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         },
       ),
+    );
+  }
+
+  List<String> sorters = ['Title', 'Year'];
+  String selectedValue = 'Title';
+  bool _isAscending = false;
+
+  Widget _sorter() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text('${_isAscending ? "↓" : "↑"} ',
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(color: AppColors.darkGray)),
+        Text('Sort by ',
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(color: AppColors.darkGray)),
+        DropdownButtonHideUnderline(
+          child: DropdownButton2(
+            items: sorters
+                .map((item) => DropdownMenuItem<String>(
+                      value: item,
+                      child: Text(camelize(item),
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(color: AppColors.darkGray)),
+                    ))
+                .toList(),
+            value: selectedValue,
+            onChanged: (value) {
+              var v = value as String;
+              bool order = !_isAscending;
+              _movieStore.sortBy(v, order);
+              setState(() {
+                selectedValue = v;
+                _isAscending = order;
+              });
+            },
+            buttonStyleData: const ButtonStyleData(height: 40, width: 64),
+            menuItemStyleData: const MenuItemStyleData(height: 40),
+          ),
+        ),
+      ],
     );
   }
 }

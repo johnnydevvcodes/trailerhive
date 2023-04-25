@@ -78,21 +78,37 @@ abstract class _MovieStore with Store {
     List<Movie> sortedMovies = List.from(this.savedMovies);
     if (sortedMovies.isEmpty) return;
     List objects = sortedMovies.map((e) => e.toJson()).toList();
+    for (var m in objects) log('not sorted: ${m['Title']}');
+    
     if (isAscending) {
       objects.sort((a, b) {
-        return a.value[key]
-            .toString()
-            .toLowerCase()
-            .compareTo(b.value[key].toString().toLowerCase());
+        if (a[key] == null && b[key] == null) {
+          return 0;
+        } else if (a[key] == null) {
+          return 1;
+        } else if (b[key] == null) {
+          return -1;
+        } else {
+          return a[key].compareTo(b[key]);
+        }
       });
+      // objects.sort((a, b) {
+      //   return a[key]
+      //       .toString()
+      //       .toLowerCase()
+      //       .compareTo(b[key].toString().toLowerCase());
+      // });
     } else {
-      objects.sort((a, b) {
-        return a.value[key]
-            .toString()
-            .toLowerCase()
-            .compareTo(b.value[key].toString().toLowerCase());
-      });
+      objects.sort((a, b) => b[key].compareTo(a[key]));
+
+      // objects.sort((a, b) {
+      //   return a[key]
+      //       .toString()
+      //       .toLowerCase()
+      //       .compareTo(b[key].toString().toLowerCase());
+      // });
     }
+    for (var m in objects) log('sort: ${m['Title']}');
     List<Movie> sorted = objects.map((e) => Movie.fromJson(e)).toList();
     this.savedMovies = sorted;
   }
