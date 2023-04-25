@@ -31,7 +31,7 @@ class _YoutubeApi implements YoutubeApi {
     )
         .compose(
           _dio.options,
-          '&part=id,snippet&type=video&q=${title}',
+          '&part=id,snippet&type=video&q=${title} trailer',
           queryParameters: queryParameters,
           data: _data,
         )

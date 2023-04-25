@@ -19,6 +19,12 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   var _movieStore = locator<MovieStore>();
   @override
+  void dispose() {
+    _movieStore.searchMovie('');
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
     return Scaffold(

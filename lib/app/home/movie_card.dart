@@ -37,15 +37,19 @@ class _MovieCardState extends State<MovieCard> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     SizedBox(
-                        width: 80,
-                        height: 80,
-                        child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(4)),
-                            child: CachedNetworkImage(
-                                alignment: Alignment.center,
-                                imageUrl: widget.movie.poster!,
-                                fit: BoxFit.cover))),
+                      width: 80,
+                      height: 80,
+                      child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(4)),
+                          child: CachedNetworkImage(
+                            alignment: Alignment.center,
+                            imageUrl: widget.movie.poster!,
+                            fit: BoxFit.cover,
+                            errorWidget: (context, url, error) =>
+                                Container(color: AppColors.lightBrown),
+                          )),
+                    ),
                     SizedBox(width: 18),
                     Expanded(
                       child: Column(
@@ -92,6 +96,8 @@ class _MovieCardState extends State<MovieCard> {
                             child: CachedNetworkImage(
                                 alignment: Alignment.center,
                                 imageUrl: widget.movie.poster!,
+                                errorWidget: (context, url, error) =>
+                                    Container(color: AppColors.lightBrown),
                                 fit: BoxFit.cover))),
                     SizedBox(width: 18),
                     Expanded(

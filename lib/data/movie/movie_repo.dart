@@ -60,8 +60,10 @@ class MovieRepo {
   Future<List<Movie>> searchMovie(String title) async {
     var data = await _omDbclient.getMovies(title);
     if (data == null) return [];
-    List list = data['Search'];
-    if (list.isEmpty) return [];
+    var list = data['Search'];
+    if (list == null) return [];
+    List searchList = list;
+    if (searchList.isEmpty) return [];
     var movies = list.map((e) => Movie.fromJson(e)).toList();
 
     List<Movie> moviesWithYtid = [];

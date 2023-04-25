@@ -9,7 +9,7 @@ abstract class YoutubeApi {
   factory YoutubeApi(Dio dio, {String baseUrl}) = _YoutubeApi;
 
   
-  @GET("&part=id,snippet&type=video&q={title}")
+  @GET("&part=id,snippet&type=video&q={title} trailer")
   Future getVideo(@Path() String title);
 
 }

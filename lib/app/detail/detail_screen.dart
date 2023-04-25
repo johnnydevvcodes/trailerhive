@@ -95,6 +95,8 @@ class _DetailScreenState extends State<DetailScreen> {
                           child: CachedNetworkImage(
                               alignment: Alignment.topCenter,
                               imageUrl: widget.movie.poster!,
+                              errorWidget: (context, url, error) =>
+                                  Container(color: AppColors.lightBrown),
                               fit: BoxFit.cover))),
                   SizedBox(width: 18),
                   Expanded(

@@ -93,6 +93,8 @@ class _RecommendationsState extends State<Recommendations> {
                   child: CachedNetworkImage(
                       alignment: Alignment.topCenter,
                       imageUrl: movie.poster!,
+                      errorWidget: (context, url, error) =>
+                          Container(color: AppColors.lightBrown),
                       fit: BoxFit.cover))),
         ),
         SizedBox(height: 4),
