@@ -32,6 +32,23 @@ class MovieRepo {
     return streamController.stream;
   }
 
+  Stream<List<Movie>> streamRecoMovies() {
+    final streamController = StreamController<List<Movie>>();
+    _movieDao.dbListener(isReco: true).listen((List<RecordSnapshot> rawMovies) {
+      List<Movie> movies = [];
+      for (var c in rawMovies) {
+        try {
+          movies.add(Movie.fromJson(c.value));
+          // log('dao good Movie: ${c.value.toString()}');
+        } catch (err) {
+          // log('dao stale Movie: ${c.value.toString()}');
+        }
+      }
+      streamController.add(movies);
+    });
+    return streamController.stream;
+  }
+
   Future saveMovie(Movie movie) {
     return _movieDao.save(movie.toJson());
   }
@@ -59,7 +76,11 @@ class MovieRepo {
     return videoId;
   }
 
-  Future<List<Movie>> getRecoMovies() async {
+  Future loadRecoMovies() async {
+
+    var record = await _movieDao.getRecords(isReco: true);
+    if (record != null) return;
+
     var ids = [
       'tt3896198',
       'tt1649418',
@@ -81,26 +102,25 @@ class MovieRepo {
 
     if (imdbs.isEmpty) return [];
 
-    List<Movie> movies = [];
-
     for (var imdb in imdbs) {
       try {
         var ytId = await getVideo(imdb.title!);
-        movies.add(
-          Movie(
-              uid: imdb.imdbID,
-              youtubeId: ytId,
-              imdb: imdb,
-              title: imdb.title,
-              year: imdb.year,
-              imdbId: imdb.imdbID,
-              type: 'movie',
-              poster: imdb.poster),
-        );
+        var movie = Movie(
+            uid: imdb.imdbID,
+            youtubeId: ytId,
+            imdb: imdb,
+            title: imdb.title,
+            year: imdb.year,
+            imdbId: imdb.imdbID,
+            type: 'movie',
+            poster: imdb.poster);
+        await _movieDao.save(movie.toJson(), isReco: true);
       } catch (e) {
         log('err: imdb: $e');
       }
     }
-    return movies;
+
+    //save recos
+    return;
   }
 }

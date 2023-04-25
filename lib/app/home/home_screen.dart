@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:trailerhive/app/home/recommendations.dart';
-import 'package:trailerhive/app/home/save_list.dart';
 import 'package:trailerhive/app/movie_store.dart';
 import 'package:trailerhive/app/search/search_screen.dart';
 import 'package:trailerhive/app/search/search_view.dart';
@@ -54,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: textTheme.titleMedium))),
               SliverToBoxAdapter(
                   child: Recommendations(recoMovies: _movieStore.recoMovies)),
+              SliverToBoxAdapter(child: SizedBox(height: 12)),
               SliverAppBar(
                   backgroundColor: Colors.white,
                   pinned: true,

@@ -17,14 +17,17 @@ abstract class _MovieStore with Store {
   var _movieRepo = locator<MovieRepo>();
 
   _MovieStore() {
-    // _movieRepo.getVideo("Maverick");
-    searchMovie("Maverick");
-    _movieRepo.getRecoMovies().then((movies) {
-      this.recoMovies = movies;
-    });    
     
+    if (recoMovies.isEmpty) {
+      _movieRepo.loadRecoMovies();
+    }
+
     _movieRepo.streamSavedMovies().listen((movies) {
       this.savedMovies = movies;
+    });
+
+    _movieRepo.streamRecoMovies().listen((movies) {
+      this.recoMovies = movies;
     });
   }
 
