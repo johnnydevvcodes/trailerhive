@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:trailerhive/app/movie_store.dart';
 import 'package:trailerhive/app/search/search_view.dart';
-import 'package:trailerhive/core/utils/router.dart';
 
 import '../../core/di/service_locator.dart';
 import '../../core/theme/app_colors.dart';
 import '../home/movie_card.dart';
-import '../widgets/cupertino_btn_slim.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

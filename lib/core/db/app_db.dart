@@ -34,8 +34,8 @@ class AppDatabase extends AppDatabaseApi {
     final appDocumentDir = await getApplicationDocumentsDirectory();
     // make sure it exists
     await appDocumentDir.create(recursive: true);
-    // Path with the form: /platform-specific-directory/th.db
-    final dbPath = join(appDocumentDir.path, 'th.db');
+    // Path with the form: /platform-specific-directory/sembast.db
+    final dbPath = join(appDocumentDir.path, 'sembast.db');
 
     var db = await databaseFactoryIo.openDatabase(dbPath);
 
