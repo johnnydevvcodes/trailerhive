@@ -2,6 +2,8 @@
 
 An app which lets you watch trailers and save movies easily
 
+<img src="https://github.com/johnsargado/trailerhive/blob/main/docs/trailerhive.gif" width="375" height="812" />
+
 ## Notes
 
 Run with the stable version of Flutter
