@@ -1,6 +1,16 @@
-# trailerhive
+# TrailerHive
 
-An app which lets you watch trailers and save movies easily
+TrailerHive is a Flutter app designed for movie enthusiasts, offering a collection of curated movie trailer videos. The app is built with a focus on clean code, reactive programming using MobX, and adheres to material design principles.
+
+## Features
+
+- Browse a diverse collection of movie trailers
+- Utilizes clean and maintainable codebase
+- Implements reactive programming with MobX
+- Adheres to material design for an intuitive user interface
+
+
+# Demo
 
 <img src="https://github.com/johnsargado/trailerhive/blob/main/docs/trailerhive.gif" width="375" height="812" />
 
